@@ -4,14 +4,23 @@
 export default defineNuxtConfig({
   modules: ["@nuxt/eslint", "@nuxt/ui", "nuxt-auth-utils"],
 
+  runtimeConfig: {
+    oauth: {
+      github: {
+        clientId: "",
+        clientSecret: ""
+      }
+    }
+  },
+
   devtools: {
-    enabled: true,
+    enabled: true
   },
 
   css: ["~/assets/css/main.css"],
 
   routeRules: {
-    "/": { prerender: true },
+    "/": { prerender: true }
   },
 
   compatibilityDate: "2025-01-15",
@@ -22,8 +31,8 @@ export default defineNuxtConfig({
         semi: true,
         quotes: "double",
         commaDangle: "never",
-        braceStyle: "1tbs",
-      },
-    },
-  },
+        braceStyle: "1tbs"
+      }
+    }
+  }
 });
