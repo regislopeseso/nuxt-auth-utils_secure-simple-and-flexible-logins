@@ -1,4 +1,4 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+// This is the nuxt.config.ts
 
 /* eslint-disable */
 export default defineNuxtConfig({

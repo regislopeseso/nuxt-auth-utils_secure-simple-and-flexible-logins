@@ -1,3 +1,5 @@
 {
-  "trailingComma": "none"
+  "trailingComma": "none",
+  "htmlWhitespaceSensitivity": "strict",
+  "singleAttributePerLine": true
 }
