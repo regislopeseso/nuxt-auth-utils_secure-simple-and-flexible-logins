@@ -10,7 +10,7 @@ const { loggedIn, user, session, fetch, clear, openInPopup } = useUserSession();
       class="flex items-center gap-4"
     >
       <UButton @click="($event) => clear()"> Logout </UButton>
-      {{ user }}
+      {{ user?.name }}
     </div>
     <div v-else>
       <UButton @click="($event) => openInPopup('/auth/github')">
