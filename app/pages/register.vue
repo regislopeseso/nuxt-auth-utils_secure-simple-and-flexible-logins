@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import * as z from "zod";
 import type { FormSubmitEvent } from "@nuxt/ui";
+import { FetchError } from "ofetch";
 
-const { openInPopup, loggedIn } = useUserSession();
+const { openInPopup, loggedIn, fetch } = useUserSession();
 
 const schema = z.object({
   name: z.string(),
@@ -20,11 +21,35 @@ const state = reactive<Partial<Schema>>({
 
 const toast = useToast();
 async function onSubmit(event: FormSubmitEvent<Schema>) {
-  toast.add({
-    title: "Success",
-    description: "The form has been submitted.",
-    color: "success"
-  });
+  try {
+    await $fetch("/auth/register", {
+      method: "POST",
+      body: event.data
+    });
+
+    fetch();
+
+    toast.add({
+      title: "User Registered",
+      description: "Thanks for registering!",
+      color: "success"
+    });
+  } catch (error) {
+    if (error instanceof FetchError) {
+      toast.add({
+        title: "Error Registering",
+        description: error.data.message,
+        color: "error"
+      });
+    } else {
+      toast.add({
+        title: "Error Registering",
+        description: "There was an issue registering. Please contact support",
+        color: "error"
+      });
+    }
+  }
+
   console.log(event.data);
 }
 
