@@ -58,3 +58,10 @@ pnpm preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+# Drizzle
+## Launch Drizzle Studio
+npx drizzle-kit studio
+
+## Execute migration
+npx drizzle-kit push
